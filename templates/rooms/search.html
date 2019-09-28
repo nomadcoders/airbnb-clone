@@ -56,12 +56,28 @@
             <input value="{{baths}}" type="number" name="baths" id="baths" placeholder="Baths" />
         </div>
         <div>
+            <label for="instant">Instant Book Only?</label>
+            <input type="checkbox" name="instant" id="instant" {% if instant  %}checked{% endif %} />
+        </div>
+        <div>
+            <label for="super_host">By Superhost Only?</label>
+            <input type="checkbox" name="super_host" id="super_host" {% if super_host %}checked{% endif %} />
+        </div>
+        <div>
             <h3>Amenities</h3>
             <ul>
                 {% for amenity in amenities %}
                     <li>
                         <label for="a_{{amenity.pk}}">{{amenity.name}}</label>
-                        <input id="a_{{amenity.pk}}" name="amenities" type="checkbox" value={{amenity.pk}} />
+                        <input 
+                            id="a_{{amenity.pk}}"
+                            name="amenities"
+                            type="checkbox"
+                            value={{amenity.pk}}
+                            {% if amenity.pk|slugify in s_amenities %}
+                                checked
+                            {% endif %}
+                        />
                     </li>
                 {% endfor %}
             </ul>
@@ -72,7 +88,15 @@
                 {% for facility in facilities %}
                     <li>
                         <label for="f_{{facility.pk}}">{{facility.name}}</label>
-                        <input id="f_{{facility.pk}}" name="facilities" type="checkbox" value={{facility.pk}} />
+                        <input 
+                            id="f_{{facility.pk}}"
+                            name="facilities"
+                            type="checkbox"
+                            value={{facility.pk}}
+                            {% if facility.pk|slugify in s_facilities %}
+                                checked
+                            {% endif %}
+                        />
                     </li>
                 {% endfor %}
             </ul>
