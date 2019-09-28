@@ -21,18 +21,61 @@
             <label for="country">Country</label>
             <select id="country" name="country" >
                 {% for country in countries  %}
-                    <option value="{{country.code}}">{{country.name}}</option>
+                    <option value="{{country.code}}" {% if country.code == s_country  %}selected{% endif %}>{{country.name}}</option>
                 {% endfor %}
             </select>
         </div>
 
         <div>
             <label for="room_type">Room Type</label>
-            <select id="room_type" name="room_type" >
+            <select id="room_type" name="room_type">
+                <option value="0" {% if s_room_type == 0  %}selected{% endif %}>Any kind</option>
                 {% for room_type in room_types  %}
-                    <option value="{{room_type.pk}}">{{room_type.name}}</option>
+                    <option value="{{room_type.pk}}" {% if s_room_type == room_type.pk  %}selected{% endif %}>{{room_type.name}}</option>
                 {% endfor %}
             </select>
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input value="{{price}}" type="number" name="price" id="price" placeholder="Price" />
+        </div>
+        <div>
+            <label for="guests">Guests</label>
+            <input value="{{guests}}" type="number" name="guests" id="guests" placeholder="Guests" />
+        </div>
+        <div>
+            <label for="bedrooms">Bedrooms</label>
+            <input value="{{bedrooms}}" type="number" name="bedrooms" id="bedrooms" placeholder="Bedrooms" />
+        </div>
+        <div>
+            <label for="beds">Beds</label>
+            <input value="{{beds}}" type="number" name="beds" id="beds" placeholder="Beds" />
+        </div>
+        <div>
+            <label for="baths">Baths</label>
+            <input value="{{baths}}" type="number" name="baths" id="baths" placeholder="Baths" />
+        </div>
+        <div>
+            <h3>Amenities</h3>
+            <ul>
+                {% for amenity in amenities %}
+                    <li>
+                        <label for="a_{{amenity.pk}}">{{amenity.name}}</label>
+                        <input id="a_{{amenity.pk}}" name="amenities" type="checkbox" value={{amenity.pk}} />
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h3>Facilities</h3>
+            <ul>
+                {% for facility in facilities %}
+                    <li>
+                        <label for="f_{{facility.pk}}">{{facility.name}}</label>
+                        <input id="f_{{facility.pk}}" name="facilities" type="checkbox" value={{facility.pk}} />
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
         <button>Search</button>
     </form>
