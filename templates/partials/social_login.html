@@ -1,8 +1,14 @@
 <div class="flex flex-col w-full">
-    <a href="{% url 'users:github-login' %}" class="w-full border-2 font-medium text-gray-700 mb-2 border-gray-700 text-center rounded-sm py-5">
+    <a href="{% url 'users:github-login' %}" class="btn border-2  text-gray-700 mb-2 border-gray-700">
         <i class="fab fa-github-alt mr-2 fa-lg"></i> Continue with Github
     </a>
-    <a href="{% url 'users:kakao-login' %}" class="w-full border font-medium text-yellow-800 mb-2 border-yellow-400 text-center rounded-sm py-5 bg-yellow-400 ">
+    <a href="{% url 'users:kakao-login' %}" class="btn border text-yellow-800 mb-2 border-yellow-400 bg-yellow-400 ">
         <i class="fas fa-comment mr-2 fa-lg"></i> Continue with Kakao
     </a>
+</div>
+
+<div class="flex items-center w-full my-5">
+    <div class="h-px w-full bg-gray-400"></div>
+    <span class="text-gray-600 font-medium mx-4 text-sm">or</span>
+    <div class="h-px w-full bg-gray-400"></div>
 </div>
