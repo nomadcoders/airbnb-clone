@@ -13,31 +13,7 @@
 
         {% include 'partials/social_login.html' %}
 
-        <form method="POST" action="{% url "users:signup" %}">
-            {% csrf_token %}
-            
-            {% if form.non_field_errors %}
-                {% for error in form.non_field_errors %}
-                    <span class="text-red-700 font-medium text-sm">{{error}}</span> 
-                {% endfor %}
-            {% endif %}
-
-            
-            {% for field in form %}
-                <div class="input w-full {% if field.errors %}has_error{% endif %}">
-                    {{field}}
-                    {% if field.errors %}
-                        {% for error in field.errors %}
-                            <span class="text-red-700 font-medium text-sm">{{error}}</span> 
-                        {% endfor %}
-                    {% endif %}
-                </div>
-            {% endfor %}
-                            
-
-            
-            <button class="btn bg-red-500 text-white">Sign up</button>
-        </form>
+        {% include 'mixins/auth/auth_form.html' with form=form cta="Sign up" %}
 
         <div class="mt-5">
                 <span class="mr-2">Have an account?</span>

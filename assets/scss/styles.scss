@@ -28,10 +28,10 @@ input {
 
 form {
   .input {
-    @apply mb-3;
+    @apply mb-3 w-full;
     &.has_error {
       input {
-        @apply bg-red-200 border-gray-400;
+        @apply bg-red-200 border-gray-600;
         &:focus {
           @apply border-gray-600;
         }
