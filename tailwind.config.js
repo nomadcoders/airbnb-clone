@@ -8,6 +8,10 @@ module.exports = {
       },
       borderRadius: {
         xl: "1.5rem"
+      },
+      minHeight: {
+        "50vh": "50vh",
+        "75vh": "75vh"
       }
     }
   },
