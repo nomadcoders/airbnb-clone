@@ -197,4 +197,3 @@ class UserProfileView(DetailView):
 
     model = models.User
     context_object_name = "user_obj"
-
