@@ -11,10 +11,13 @@
      
     <div class="container lg:w-5/12 md:w-1/2 xl:w-1/4 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400">
 
-            {% include 'mixins/auth/auth_form.html' with form=form cta="Update profile" %}
+        {% include 'mixins/auth/auth_form.html' with form=form cta="Update profile" %}
 
+        {% if object.login_method == "password" %}
             <div class="mt-5">
-                <a href="{% url 'users:signup' %}" class="text-teal-500 font-medium">Change Password</a>
+                <a href="{% url 'users:password' %}" class="text-teal-500 font-medium">Change Password</a>
             </div>
+        {% endif %}
+            
     </div>
 {% endblock content %}
