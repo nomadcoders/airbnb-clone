@@ -1,5 +1,14 @@
 <ul class="flex items-center text-sm font-medium h-full">
     {% if user.is_authenticated %}
+        <li class="nav_link">
+            <a href="{% url 'users:switch-hosting' %}">
+                {% if request.session.is_hosting %}
+                    Stop hosting
+                {% else %}
+                    Start hosting
+                {% endif %}
+            </a>
+        </li>
         <li class="nav_link"><a href="{{user.get_absolute_url}}">Profile</a></li>
         <li class="nav_link"><a href="{% url "users:logout" %}">Log out</a></li>
     {% else %}
