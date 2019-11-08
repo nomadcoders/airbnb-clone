@@ -18,11 +18,15 @@
                     <span class="ml-5 text-xl">{{photo.caption}}</span>
                 </div>
                 <div class="flex flex-col w-1/5">
-                    <a class="btn-link mb-5 bg-teal-500" href="#">Edit</a>
+                    <a class="btn-link mb-5 bg-teal-500" href="{% url 'rooms:edit-photo' room.pk photo.pk %}">Edit</a>
                     <a class="btn-link bg-red-600" href="{% url 'rooms:delete-photo' room.pk photo.pk %}">Delete</a>
                 </div>
             </div>
         {% endfor %}
+
+        <div class="flex justify-center mt-5">
+            <a href="{% url 'rooms:edit' room.pk %}" class="text-teal-500 font-medium text-xl">Back to edit room</a>
+        </div>
             
     </div>
 {% endblock content %}
