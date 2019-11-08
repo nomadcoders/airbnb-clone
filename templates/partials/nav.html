@@ -9,6 +9,9 @@
                 {% endif %}
             </a>
         </li>
+        {% if request.session.is_hosting %}
+            <li class="nav_link"><a href="{% url 'rooms:create' %}">Create Room</a></li>
+        {% endif %}
         <li class="nav_link"><a href="{{user.get_absolute_url}}">Profile</a></li>
         <li class="nav_link"><a href="{% url "users:logout" %}">Log out</a></li>
     {% else %}
