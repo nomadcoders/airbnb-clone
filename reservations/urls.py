@@ -9,6 +9,5 @@ urlpatterns = [
         views.create,
         name="create",
     ),
-    path("<int:pk>", views.ReservationDetailView.as_view(), name="detail"),
+    path("<int:pk>/", views.ReservationDetailView.as_view(), name="detail"),
 ]
-
