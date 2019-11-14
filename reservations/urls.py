@@ -10,4 +10,5 @@ urlpatterns = [
         name="create",
     ),
     path("<int:pk>/", views.ReservationDetailView.as_view(), name="detail"),
+    path("<int:pk>/<str:verb>", views.edit_reservation, name="edit"),
 ]

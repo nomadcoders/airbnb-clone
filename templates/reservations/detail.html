@@ -35,9 +35,9 @@
     
             <div class="py-10 px-5">
                 {% if reservation.status == 'pending' %}
-                  <a href="#" class="btn-link block px-3 mb-5">Cancel Reservation</a>
-                  {% if reservation.room.host != user %}
-                        <a href="#" class="btn-link block px-5">Confirm Reservation</a>
+                    <a href="{% url 'reservations:edit' reservation.pk 'cancel' %}" class="btn-link block px-5">Cancel Reservation</a>
+                {% if reservation.room.host == user %}
+                    <a href="{% url 'reservations:edit' reservation.pk 'confirm' %}" class="btn-link block px-3 mb-5">Confirm Reservation</a>
                   {% endif %}
                 {% endif %}
             </div>
