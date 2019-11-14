@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load sexy_capitals %}
 
 {% block page_title %}
     {{room.name}}
@@ -91,6 +91,7 @@
             {% if room.host == user %}
                 <a href="{% url 'rooms:edit' room.pk %}" class="btn-link block">Edit Room</a>
             {% else %}
+                {{'something'|sexy_capitals}}
                 {% if not request.session.is_hosting %}
                     {% for calendar in room.get_calendars %}
                     <div class="mb-20">
@@ -104,9 +105,9 @@
                             {% for day in calendar.get_days  %}
                                 {% if day.number != 0 %}
                                     {% if day.past %}
-                                        <span class="rounded bg-gray-200 w-full text-center p-1 text-gray-300">{{day}}</span>
+                                        <span class="cal-number bg-gray-200 text-gray-400">{{day}}</span>
                                     {% else %}
-                                        <span class="bg-gray-200 w-full text-center rounded text-gray-700 p-1 hover:bg-teal-400 hover:text-white hover:font-medium cursor-pointer">{{day}}</span>
+                                        <span class="cal-number bg-gray-200 text-gray-700 hover:bg-teal-400 hover:text-white hover:font-medium">{{day}}</span>
                                     {% endif %}
                                 {% else %}
                                   <span></span>

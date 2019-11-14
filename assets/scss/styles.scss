@@ -101,4 +101,8 @@ form {
   justify-items: center;
 }
 
+.cal-number {
+  @apply w-full text-center rounded p-1 cursor-pointer;
+}
+
 @tailwind utilities;
