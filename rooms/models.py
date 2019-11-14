@@ -122,6 +122,6 @@ class Room(core_models.TimeStampedModel):
         return photos
 
     def get_calendars(self):
-        calendar = Calendar(2019, 11)
-        print(calendar.get_month())
-        return False
+        this_month = Calendar(2019, 11)
+        next_month = Calendar(2019, 12)
+        return [this_month, next_month]
