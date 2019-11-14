@@ -15,7 +15,7 @@
 
         <div class="flex flex-col items-start border-l border-r border-t border-b">
             <div class="font-medium border-b py-8 px-5 w-full">
-                {{reservation.check_in}} - {{reservation.check_out}} <span>{{reservation.status}}</span>
+                {{reservation.check_in}} - {{reservation.check_out}} <span class="ml-5 {% if reservation.status == 'pending' %} text-yellow-500 {% elif reservation.status == 'canceled' %} text-red-600 {% else %} text-teal-600 {% endif %}">{{reservation.get_status_display}}</span>
             </div>
     
             <span class="text-2xl border-b p-5 mt-2 w-full">
@@ -34,7 +34,12 @@
             </div>
     
             <div class="py-10 px-5">
-                <a href="#" class="btn-link block px-3">Cancel Reservation</a>
+                {% if reservation.status == 'pending' %}
+                  <a href="#" class="btn-link block px-3 mb-5">Cancel Reservation</a>
+                  {% if reservation.room.host != user %}
+                        <a href="#" class="btn-link block px-5">Confirm Reservation</a>
+                  {% endif %}
+                {% endif %}
             </div>
         </div>
 
