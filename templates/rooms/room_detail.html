@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load is_booked %}
+{% load is_booked i18n %}
 
 {% block page_title %}
     {{room.name}}
@@ -28,6 +28,7 @@
                     <span class="mt-2 text-gray-500">{{room.host.first_name}}</span>
                 </a>
             </div>
+            <a class="btn-link block mb-10 w-2/6" href="{% url 'lists:save-room' room.pk %}">{% trans "Save to Favourites" %}</a>
             <div class="flex border-section">
                 <span class="mr-5 font-light">{{room.room_type}}</span>
                 <span class="mr-5 font-light">{{room.beds}} bed{{room.beds|pluralize}}</span>
@@ -93,7 +94,7 @@
             {% else %}
                 {% if not request.session.is_hosting %}
                     {% for calendar in room.get_calendars %}
-                    <div class="mb-20">
+                    <div class="mb-20">        
                         <span class="text-center font-semibold text-lg block mb-8">{{calendar.get_month}} / {{calendar.year}}</span>
                         <div class="cal-grid font-medium mb-4">
                             {% for day in calendar.day_names  %}
