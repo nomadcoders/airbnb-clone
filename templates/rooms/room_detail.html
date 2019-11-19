@@ -30,9 +30,9 @@
             </div>
             {% on_favs room as on_favs_boolean %}
             {% if on_favs_boolean %}
-            <a class="block mb-10 w-2/6" href="{% url 'lists:save-room' room.pk %}">{% trans "Remove from Favourites" %}</a>
+                <a class="block mb-10 w-2/6 text-teal-600 font-bold" href="{% url 'lists:toggle-room' room.pk %}?action=remove">{% trans "Remove from Favourites" %}</a>
             {% else %}
-                <a class="block mb-10 w-2/6" href="{% url 'lists:save-room' room.pk %}">{% trans "Save to Favourites" %}</a>
+                <a class="block mb-10 w-2/6 text-teal-600 font-bold" href="{% url 'lists:toggle-room' room.pk %}?action=add">{% trans "Save to Favourites" %}</a>
             {% endif %}
             
             <div class="flex border-section">
