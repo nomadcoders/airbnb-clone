@@ -1,7 +1,15 @@
 {% load i18n %}
-<footer class="container mx-auto text-center py-10 border-t font-medium text-gray-500 flex flex-col">
-    <span>
-        {% trans "Please don't copy us." %}
-    </span>
-    <span>&copy; 2019 Nomad Coders. {% trans "All rights reserved" %}.</span>
+<footer class="container mx-auto text-center py-10 border-t font-medium text-gray-500">
+    <div class="flex flex-col">
+        <span>
+            {% trans "Please don't copy us." %}
+        </span>
+        <span>&copy; 2019 Nomad Coders. {% trans "All rights reserved" %}.</span>
+    </div>
+    <div class="mt-10 flex">
+        <select class="w-1/5 h-8" id="js-lang">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+        </select>
+    </div>
 </footer>
