@@ -25,29 +25,37 @@
                 {% endfor %}
             </div>
         </div>
-        <div class="border flex-grow ml-10 p-10 flex flex-col">
-            {% if conversation.messages.count == 0 %}
-                no messages
-            {% else %}
-                {% for message in conversation.messages.all  %}
-                    <div class="mb-10 {% if message.user.pk == user.pk %}
-                        self-end
-                        text-right
-                    {% endif %}">
-                        <span class="text-sm font-medium text-gray-600">{{message.user.first_name}}</span>
-                        <div class="mt-px p-5 w-56 rounded
-                            {% if message.user.pk != user.pk %}
-                                bg-teal-500
-                                text-white
-                            {% else %}
-                                bg-gray-300
-                            {% endif %}
-                        ">
-                            {{message.message}}
+        <div class="flex-grow">
+        <div class="border  ml-10 p-10 flex flex-col">
+                {% if conversation.messages.count == 0 %}
+                    no messages
+                {% else %}
+                    {% for message in conversation.messages.all  %}
+                        <div class="mb-10 {% if message.user.pk == user.pk %}
+                            self-end
+                            text-right
+                        {% endif %}">
+                            <span class="text-sm font-medium text-gray-600">{{message.user.first_name}}</span>
+                            <div class="mt-px p-5 w-56 rounded
+                                {% if message.user.pk != user.pk %}
+                                    bg-teal-500
+                                    text-white
+                                {% else %}
+                                    bg-gray-300
+                                {% endif %}
+                            ">
+                                {{message.message}}
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
+                    {% endfor %}
+                {% endif %}
+                
+            </div>
+            <form class="mt-10 w-1/2 mx-auto" method="POST">
+                {% csrf_token %}
+                <input class="border-box mb-5" name="message" placeholder="Write a Message" required />
+                <button class="btn-link">Send Comment</button>
+            </form>
         </div>
 
     </div>
