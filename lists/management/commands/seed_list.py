@@ -14,25 +14,13 @@ class Command(BaseCommand):
 
     help = f"This command creates {NAME}"
 
-    def add_arguments(self, parser):
-        parser.add_argument(
-            "--number", default=2, type=int, help=f"How many {NAME} you want to create"
-        )
-
     def handle(self, *args, **options):
-        number = options.get("number")
-        seeder = Seed.seeder()
         users = user_models.User.objects.all()
         rooms = room_models.Room.objects.all()
-        seeder.add_entity(
-            list_models.List, number, {"user": lambda x: random.choice(users)}
-        )
 
-        created = seeder.execute()
-        cleaned = flatten(list(created.values()))
-        for pk in cleaned:
-            list_model = list_models.List.objects.get(pk=pk)
+        for user in users:
+            list_model = list_models.List.objects.create(user=user, name="Favs.")
             to_add = rooms[random.randint(0, 5) : random.randint(6, 30)]
             list_model.rooms.add(*to_add)
 
-        self.stdout.write(self.style.SUCCESS(f"{number} {NAME} created!"))
+        self.stdout.write(self.style.SUCCESS(f"{0} {NAME} created!"))
