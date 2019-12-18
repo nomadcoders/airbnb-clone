@@ -190,12 +190,7 @@ if not DEBUG:
         dsn=os.environ.get("SENTRY_URL"),
         integrations=[DjangoIntegration()],
         send_default_pii=True,
+        ignore_errors=["django.security.DisallowedHost"],
     )
 
-    LOGGING = {
-        "version": 1,
-        "disable_existing_loggers": False,
-        "loggers": {
-            "django.security.DisallowedHost": {"handlers": [], "propagate": False,},
-        },
-    }
+    sentry_sdk.integrations.logging.ignore_logger("django.security.DisallowedHost")
